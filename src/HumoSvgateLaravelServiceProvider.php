@@ -2,9 +2,9 @@
 
 namespace HumoSvgate\HumoSvgateLaravel;
 
+use HumoSvgate\HumoSvgateLaravel\Commands\HumoSvgateLaravelCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use HumoSvgate\HumoSvgateLaravel\Commands\HumoSvgateLaravelCommand;
 
 class HumoSvgateLaravelServiceProvider extends PackageServiceProvider
 {

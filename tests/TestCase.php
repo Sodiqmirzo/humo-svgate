@@ -2,9 +2,9 @@
 
 namespace HumoSvgate\HumoSvgateLaravel\Tests;
 
+use HumoSvgate\HumoSvgateLaravel\HumoSvgateLaravelServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use HumoSvgate\HumoSvgateLaravel\HumoSvgateLaravelServiceProvider;
 
 class TestCase extends Orchestra
 {
