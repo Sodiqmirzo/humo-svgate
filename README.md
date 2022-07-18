@@ -32,13 +32,6 @@ You can publish the config file with:
 php artisan vendor:publish --tag="humo-svgate-laravel-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 
 ```php
