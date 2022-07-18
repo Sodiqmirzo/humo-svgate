@@ -92,7 +92,7 @@ class HumoSvgateLaravel
         $response = $this->sendRequest('post', '/v2/mb/customer/remove-card', [
             'Card' => [
                 'pan' => $pan,
-            ]
+            ],
         ]);
 
         return new CustomerRemoveCard($response);
@@ -101,7 +101,7 @@ class HumoSvgateLaravel
     public function customerEditCard(CardDto $cardDto): CustomerEditCard
     {
         $response = $this->sendRequest('post', '/v2/mb/customer/edit-card', [
-            'Card' => $cardDto
+            'Card' => $cardDto,
         ]);
 
         return new CustomerEditCard($response);
