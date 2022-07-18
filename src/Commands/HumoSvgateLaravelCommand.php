@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace HumoSvgate\HumoSvgateLaravel\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class HumoSvgateLaravelCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'humo-svgate-laravel';
 
     public $description = 'My command';
 
