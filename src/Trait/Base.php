@@ -21,7 +21,7 @@ trait Base
 
         return Http::withHeaders([
             'Content-Type' => 'application/json; charset=utf-8',
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
         ])->withToken($this->getToken())
             ->$request_type($base_url . $url, $preparedParams)
             ->throw(function ($response, $e) {
