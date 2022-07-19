@@ -6,14 +6,19 @@ use HumoSvgate\HumoSvgateLaravel\Dtos\CardDto;
 use HumoSvgate\HumoSvgateLaravel\Dtos\ChargeDto;
 use HumoSvgate\HumoSvgateLaravel\Dtos\EmailDto;
 use HumoSvgate\HumoSvgateLaravel\Dtos\PhoneDto;
+use HumoSvgate\HumoSvgateLaravel\Dtos\RateDto;
 use HumoSvgate\HumoSvgateLaravel\Response\Customer;
 use HumoSvgate\HumoSvgateLaravel\Response\CustomerActivate;
+use HumoSvgate\HumoSvgateLaravel\Response\CustomerCardByPassport;
 use HumoSvgate\HumoSvgateLaravel\Response\CustomerChangeCardholdersMessageLang;
 use HumoSvgate\HumoSvgateLaravel\Response\CustomerChangePhoneNumber;
 use HumoSvgate\HumoSvgateLaravel\Response\CustomerDeactivate;
 use HumoSvgate\HumoSvgateLaravel\Response\CustomerEditCard;
 use HumoSvgate\HumoSvgateLaravel\Response\CustomerList;
 use HumoSvgate\HumoSvgateLaravel\Response\CustomerRemoveCard;
+use HumoSvgate\HumoSvgateLaravel\Response\ExchangeRate;
+use HumoSvgate\HumoSvgateLaravel\Response\IiacsCard;
+use HumoSvgate\HumoSvgateLaravel\Response\TransactionScoring;
 use HumoSvgate\Trait\Base;
 
 class HumoSvgateLaravel
@@ -111,5 +116,55 @@ class HumoSvgateLaravel
         ]);
 
         return new CustomerEditCard($response);
+    }
+
+    public function iiacsCard(string $primaryAccountNumber, int $mbFlag): IiacsCard
+    {
+        $response = $this->sendRequest('post', '/v2/iiacs/card', [
+            'primaryAccountNumber' => $primaryAccountNumber,
+            'mb_flag' => $mbFlag,
+        ]);
+
+        return new IiacsCard($response);
+    }
+
+    public function customerCardByPassport(string $serialNo, string $idCard): CustomerCardByPassport
+    {
+        $response = $this->sendRequest('post', '/cs/v1/customer/cards/by-passport', [
+            'serial_no' => $serialNo,
+            'id_card' => $idCard,
+        ]);
+
+        return new CustomerCardByPassport($response);
+    }
+
+    public function customerCardByPersonCode(string $personCode): CustomerCardByPassport
+    {
+        $response = $this->sendRequest('post', '/cs/v1/customer/cards/by-person-code', [
+            'person_code' => $personCode,
+        ]);
+
+        return new CustomerCardByPassport($response);
+    }
+
+    public function transactionScoring(string $card, string $dateFrom, string $dateTo): TransactionScoring
+    {
+        $response = $this->sendRequest('post', '/cs/v1/transactions/scoring', [
+            'card' => $card,
+            'date_from' => $dateFrom,
+            'date_to' => $dateTo,
+        ]);
+
+        return new TransactionScoring($response);
+        //TODO asking response
+    }
+
+    public function exchangeRate(RateDto $rate): ExchangeRate
+    {
+        $response = $this->sendRequest('post', '/v2/ccr2/exchange-rates', [
+            'rate' => $rate,
+        ]);
+
+        return new ExchangeRate($response);
     }
 }
