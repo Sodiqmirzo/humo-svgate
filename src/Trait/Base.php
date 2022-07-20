@@ -2,6 +2,7 @@
 
 namespace HumoSvgate\Trait;
 
+use HumoSvgate\HumoSvgateLaravel\Exceptions\Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
